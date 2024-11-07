@@ -1,0 +1,43 @@
+/**
+DAX EXPRESSIONS USED IN POWERBI AND OTHERS
+
+1. TO FIND TOTAL FACILITIES
+TotalFacilities = COUNTROWS(DISTINCT(CaliforniaHospitalsData[FACID]))
+
+2. CONDITIONAL COLUMN CREATED FOR TERMINAT SW TO SHOW TERMINATED (Y) AND NOT TERMINATED (IF BLANK)
+
+3. CONDITIONAL COLUMN CREATED FOR T18_T19 COLUMN, T19- MEDIC-CAL, T18 OR T18/T19 = MEDICARE/MEDIC-CAL, ELSE 'OTHER'
+
+4. to find terminated number 
+Terminated = CALCULATE(COUNTROWS(CaliforniaHospitalsData), (CaliforniaHospitalsData[Terminat_status ]="Terminated"))
+
+5. to find not terminated number 
+Not_Terminated = CALCULATE(COUNTROWS(CaliforniaHospitalsData), (CaliforniaHospitalsData[Terminat_status ]="Not Terminated"))
+
+6. TO FIND INACTIVE FACILITIES LICENSE STATUS
+Inactive = 
+CALCULATE(
+    COUNTROWS('CaliforniaHospitalsData'),
+    FILTER(
+        'CaliforniaHospitalsData',
+        CONTAINSSTRING('CaliforniaHospitalsData'[LICENSE_STATUS_DESCRIPTION], "Inactive")
+    )
+)
+
+7. TO FIND ACTIVE FACILITIES LICENSE STATUS
+Active = CALCULATE(COUNTROWS(CaliforniaHospitalsData), (CaliforniaHospitalsData[LICENSE_STATUS_DESCRIPTION]="Active"))
+
+8. TO FIND THE NUMBER OF CERTIFIED FACILITIES
+Certified Only = CALCULATE(COUNTROWS(CaliforniaHospitalsData), (CaliforniaHospitalsData[LICENSED_CERTIFIED]="Certified Only"))
+
+9. TO FIND THE NUMBER OF LICENSED AND CERTIFIED FACILITIES
+Licensed and Certified = CALCULATE(COUNTROWS(CaliforniaHospitalsData),
+	(CaliforniaHospitalsData[LICENSED_CERTIFIED]="Licensed and Certified"))
+
+10.  TO FIND THE NUMBER OF LICENSED ONLY FACILITIES
+Licensed Only = CALCULATE(COUNTROWS(CaliforniaHospitalsData), (CaliforniaHospitalsData[LICENSED_CERTIFIED]="Licensed Only"))
+
+11. TO FIND THE NUMBER OF NOT LICENSED/NOT CERTIFIED FACILITIES
+Not_Licensed/Not Certified = CALCULATE(COUNTROWS(CaliforniaHospitalsData), 
+	(CaliforniaHospitalsData[LICENSED_CERTIFIED]="Not Licensed/Not Certified"))
+**/
