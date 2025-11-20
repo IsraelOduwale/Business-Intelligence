@@ -10,3 +10,5 @@ World Universities dashboards uploaded 01-18-2025
 Emade Sales, HealthInsurance, Subcriptions and Plans dashboards upload 10/29/2025
 
 Emade Stolen Vehicle dashboard uploaded 11/10/2025
+
+Emade Artists and Songs dashboard uploaded 11-19-25
